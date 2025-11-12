@@ -65,9 +65,9 @@ class KuhnPoker {
 
     void shuffle(vector<int>& cards) {
         for (int i = cards.size() - 1; i > 0; --i) {
-            std::uniform_int_distribution<> dist(0, i);
+            uniform_int_distribution<> dist(0, i);
             int j = dist(generator);
-            std::swap(cards[i], cards[j]);
+            swap(cards[i], cards[j]);
         }
     }
 
