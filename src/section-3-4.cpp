@@ -44,12 +44,12 @@ class Node {
         return avg;
     }
 
-    string to_string() {
+    string describe() {
         string s = infoset + ": [";
         vector<double> avg = get_average_strategy(strategy_sum);
 
         for (size_t i = 0; i < avg.size(); i++) {
-            s += std::to_string(avg[i]);
+            s += to_string(avg[i]);
             if (i + 1 < avg.size()) s += ", ";
         }
         s += "]";
@@ -78,22 +78,22 @@ class KuhnPoker {
 
         if (plays > 1) {
             bool terminalPass = history[plays - 1] == 'p';
-            bool doubleBet = history.substr(plays - 2, plays) == "bb";
+            bool doubleBet = history.substr(plays - 2, 2) == "bb";
             bool isPlayerCardHigher = cards[player] > cards[opponent];
 
             if (terminalPass) {
                 if (history == "pp")
-                    return isPlayerCardHigher ? 1 : -1;
+                    return isPlayerCardHigher ? 1.0 : -1.0;
                 else
-                    return 1;
+                    return 1.0;
             } else if (doubleBet) {
-                return isPlayerCardHigher ? 2 : -2;
+                return isPlayerCardHigher ? 2.0 : -2.0;
             }
         }
 
         string infoset = to_string(cards[player]) + history;
 
-        auto& node = node_map.try_emplace(infoset, std::make_unique<Node>()).first->second;
+        auto& node = node_map.try_emplace(infoset, make_unique<Node>()).first->second;
         node->infoset = infoset;
 
         vector<double> strategy = node->get_strategy(player == 0 ? p0 : p1);
@@ -126,7 +126,7 @@ class KuhnPoker {
 
         cout << "Average game value: " << util / iterations << endl;
         for (const auto& [key, node] : node_map) {
-            cout << node->to_string() << endl;
+            cout << node->describe() << endl;
         }
     }
 };
