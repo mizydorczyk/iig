@@ -1,3 +1,7 @@
+// Section 2.5
+// Two-player regret matching algorithm for Rock-Paper-Scissors game.
+// Exercise from "An Introduction to Counterfactual Regret Minimization" by Todd W. Neller and Marc Lanctot
+
 #include <array>
 #include <cstdlib>
 #include <iomanip>

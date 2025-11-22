@@ -1,3 +1,8 @@
+// Section 3.5 (2)
+// Two-player Counterfactual Regret Minimization (CFR) with chance sampling for the last round of Dudo.
+// Implemented with full history vector passing.
+// Exercise from "An Introduction to Counterfactual Regret Minimization" by Todd W. Neller and Marc Lanctot
+
 #include <algorithm>
 #include <iostream>
 #include <random>

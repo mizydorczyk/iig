@@ -1,11 +1,13 @@
+// Section 2.6
+// Two-player regret matching algorithm for Colonel Blotto game.
+// Exercise from "An Introduction to Counterfactual Regret Minimization" by Todd W. Neller and Marc Lanctot
+
 #include <algorithm>
-#include <cstdlib>
 #include <functional>
 #include <iomanip>
 #include <iostream>
 #include <numeric>
 #include <random>
-#include <utility>
 #include <vector>
 
 using namespace std;
